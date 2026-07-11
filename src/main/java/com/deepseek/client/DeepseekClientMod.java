@@ -41,7 +41,7 @@ public class DeepseekClientMod implements ClientModInitializer {
         this.configManager = new ConfigManager();
 
         guiKeyBind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.deepseekclient.gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F6, CLIENT_NAME
+                "key.deepseekclient.gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F6, "key.category.deepseekclient"
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
