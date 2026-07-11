@@ -15,7 +15,8 @@ public class WorldUtils {
         if (mc.world == null) return Optional.empty();
         return mc.world.getPlayers().stream()
                 .filter(e -> e != mc.player && e.isAlive() && mc.player.distanceTo(e) <= range)
-                .min(Comparator.comparingDouble(e -> mc.player.distanceTo(e)));
+                .min(Comparator.comparingDouble(e -> mc.player.distanceTo(e)))
+                .map(e -> (PlayerEntity) e);
     }
 
     public static Vec3d getCenter(Box box) {
