@@ -1,7 +1,13 @@
 package com.deepseek.client.module.impl.combat;
 
 import com.deepseek.client.module.*;
+import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
 public class AntiKnockback extends Module {
-    public AntiKnockback() { super("AntiKnockback", "防击退", Category.COMBAT, 0); }
+    public AntiKnockback() {
+        super("AntiKnockback", "Grim-bypass velocity", Category.COMBAT, 0);
+    }
+
+    // Use mixin to reduce velocity to 40% instead of 0% (Grim checks velocity 0)
+    // This is handled in MixinEntity.java
 }
