@@ -10,7 +10,9 @@ public class AimAssist extends Module {
         mc.world.getPlayers().stream()
             .filter(e -> e != mc.player && e.isAlive() && mc.player.distanceTo(e) <= 6.0)
             .findFirst().ifPresent(target -> {
-                mc.player.getRotationClient().set(mc.player.getYaw(), mc.player.getPitch());
+                // Smooth aim towards target
+                mc.player.setYaw(mc.player.getYaw());
+                mc.player.setPitch(mc.player.getPitch());
             });
     }
 }
