@@ -15,7 +15,6 @@
   "entrypoints": {
     "client": ["com.deepseek.client.DeepseekClientMod"]
   },
-  "accessWidener": "deepseekclient.accesswidener",
   "mixins": ["deepseekclient.mixins.json"],
   "depends": {
     "fabricloader": ">=0.15.0",

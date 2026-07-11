@@ -47,5 +47,4 @@ jar {
 }
 
 loom {
-    accessWidenerPath = file("src/main/resources/deepseekclient.accesswidener")
 }
