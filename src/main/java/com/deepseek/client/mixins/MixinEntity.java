@@ -12,22 +12,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinEntity {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
-    // AntiKnockback: reduce velocity to 40% (Grim flags 0%)
     @Inject(method = "setVelocityClient", at = @At("HEAD"), cancellable = true)
     private void onSetVelocity(double x, double y, double z, CallbackInfo ci) {
+        var self = (Entity) (Object) this;
+        if (self != mc.player) return;
         var mod = DeepseekClientMod.getInstance();
         if (mod == null) return;
-        var self = (Entity) (Object) this;
-        if (self == null || mc.player == null) return;
 
-        boolean antikb = mod.moduleManager.getModule("AntiKnockback").isEnabled();
-        boolean kbBalance = mod.moduleManager.getModule("KBBalance").isEnabled();
-
-        if (antikb && self == mc.player) {
-            self.setVelocity(x * 0.4, y * 0.4, z * 0.4);
+        if (mod.moduleManager.getModule("AntiKnockback").isEnabled()) {
+            mc.player.setVelocity(x * 0.3, y * 0.3, z * 0.3);
             ci.cancel();
-        } else if (kbBalance && self == mc.player) {
-            self.setVelocity(x * 1.2, y * 1.2, z * 1.2);
+        } else if (mod.moduleManager.getModule("KBBalance").isEnabled()) {
+            mc.player.setVelocity(x * 1.3, y * 1.3, z * 1.3);
             ci.cancel();
         }
     }

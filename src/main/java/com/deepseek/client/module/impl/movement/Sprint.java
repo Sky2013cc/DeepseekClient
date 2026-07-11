@@ -4,13 +4,11 @@ import com.deepseek.client.module.Module;
 import com.deepseek.client.module.Category;
 
 public class Sprint extends Module {
-    public Sprint() {
-        super("Sprint", "Grim-safe auto sprint", Category.MOVEMENT, 0);
-    }
+    public Sprint() { super("Sprint", "自动疾跑", Category.MOVEMENT, 0); }
+
     @Override
     public void onTick() {
         if (mc.player == null) return;
-        // Grim: only set sprint when actually moving forward
         if (mc.player.forwardSpeed > 0 && !mc.player.horizontalCollision && !mc.player.isSneaking()) {
             mc.player.setSprinting(true);
         }
