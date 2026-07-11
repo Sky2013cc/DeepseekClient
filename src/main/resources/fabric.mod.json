@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "deepseekclient",
+  "version": "${version}",
+  "name": "DeepseekClient",
+  "description": "Advanced Minecraft Utility Mod - DeepseekClient",
+  "authors": ["Sky_2013cc"],
+  "contact": {
+    "homepage": "https://github.com/Sky2013cc/DeepseekClient",
+    "sources": "https://github.com/Sky2013cc/DeepseekClient"
+  },
+  "license": "MIT",
+  "icon": "assets/deepseekclient/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.deepseek.client.DeepseekClientMod"]
+  },
+  "accessWidener": "deepseekclient.accesswidener",
+  "mixins": ["deepseekclient.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.20.1",
+    "java": ">=17"
+  }
+}

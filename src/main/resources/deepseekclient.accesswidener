@@ -1,0 +1,16 @@
+accessWidener v2 named
+
+# Entity
+TRANSLATABLE net/minecraft/entity/Entity field_5982 Lnet/minecraft/entity/data/DataTracker;
+TRANSLATABLE net/minecraft/entity/Entity method_5721()Z
+TRANSLATABLE net/minecraft/entity/Entity method_5621()F
+
+# LivingEntity
+TRANSLATABLE net/minecraft/entity/LivingEntity field_6215 F
+TRANSLATABLE net/minecraft/entity/LivingEntity field_6216 F
+
+# ClientPlayerEntity
+TRANSLATABLE net/minecraft/client/network/ClientPlayerEntity method_5773()V
+
+# MinecraftClient
+TRANSLATABLE net/minecraft/client/MinecraftClient field_1724 Lnet/minecraft/client/network/ClientPlayerInteractionManager;
