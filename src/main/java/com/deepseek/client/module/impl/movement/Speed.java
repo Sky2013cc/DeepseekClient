@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.movement;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 
 public class Speed extends Module {

@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.player;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 
 public class Scaffold extends Module {
     public Scaffold() { super("Scaffold", "自动搭路", Category.PLAYER, 0); }

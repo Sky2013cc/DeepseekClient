@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.combat;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;

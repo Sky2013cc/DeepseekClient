@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.combat;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 
 public class AutoSoup extends Module {
     public AutoSoup() { super("AutoSoup", "自动喝汤", Category.COMBAT, 0); }

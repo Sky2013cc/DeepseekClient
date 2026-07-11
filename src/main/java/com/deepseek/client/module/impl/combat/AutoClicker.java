@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.combat;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 
 public class AutoClicker extends Module {
     private long lastClick = 0;

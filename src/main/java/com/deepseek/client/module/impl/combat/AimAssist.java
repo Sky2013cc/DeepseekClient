@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.combat;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 
 public class AimAssist extends Module {
     public AimAssist() { super("AimAssist", "自动瞄准辅助", Category.COMBAT, 0); }

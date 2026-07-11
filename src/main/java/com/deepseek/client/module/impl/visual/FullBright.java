@@ -1,6 +1,7 @@
 package com.deepseek.client.module.impl.visual;
 
-import com.deepseek.client.module.*;
+import com.deepseek.client.module.Module;
+import com.deepseek.client.module.Category;
 
 public class FullBright extends Module {
     public FullBright() { super("FullBright", "全亮度", Category.VISUAL, 0); }
