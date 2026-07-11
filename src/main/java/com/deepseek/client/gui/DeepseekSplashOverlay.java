@@ -6,7 +6,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Overlay;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.ColorHelper;
 
 public class DeepseekSplashOverlay extends Overlay {
     private static final Text TITLE = Text.of(DeepseekClientMod.CLIENT_NAME);
