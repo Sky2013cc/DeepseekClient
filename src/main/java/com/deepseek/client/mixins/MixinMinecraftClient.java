@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ChatScreen.class)
 public class MixinMinecraftClient {
 
-    @Inject(method = "sendMessage(Ljava/lang/String;Z)V", at = @At("HEAD"), cancellable = true)
-    private void onSendMessage(String message, boolean addToHistory, CallbackInfo ci) {
+    @Inject(method = "sendMessage(Ljava/lang/String;)V", at = @At("HEAD"), cancellable = true)
+    private void onSendMessage(String message, CallbackInfo ci) {
         if (message.startsWith(".")) {
             DeepseekClientMod.getInstance().commandManager.execute(message);
             ci.cancel();
