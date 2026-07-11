@@ -4,6 +4,7 @@ import com.deepseek.client.DeepseekClientMod;
 import com.deepseek.client.module.Module;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.Text;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,8 +28,41 @@ public class CommandManager {
         commands.add(new Command("bind", "b", "Set keybind for module") {
             @Override public void execute(String[] args) {
                 if (args.length < 3) { msg("Usage: .bind <module> <key>"); return; }
-                // Key binding logic here
-                msg("§eBind feature - use ClickGUI instead");
+                String moduleName = args[1];
+                String keyName = args[2].toUpperCase();
+                Module m = DeepseekClientMod.getInstance().moduleManager.getModule(moduleName);
+                if (m == null) { msg("§cModule not found: " + moduleName); return; }
+                int keyCode = switch (keyName) {
+                    case "F6" -> GLFW.GLFW_KEY_F6;
+                    case "F7" -> GLFW.GLFW_KEY_F7;
+                    case "F8" -> GLFW.GLFW_KEY_F8;
+                    case "F9" -> GLFW.GLFW_KEY_F9;
+                    case "F10" -> GLFW.GLFW_KEY_F10;
+                    case "F11" -> GLFW.GLFW_KEY_F11;
+                    case "F12" -> GLFW.GLFW_KEY_F12;
+                    case "RSHIFT" -> GLFW.GLFW_KEY_RIGHT_SHIFT;
+                    case "LSHIFT" -> GLFW.GLFW_KEY_LEFT_SHIFT;
+                    case "LCONTROL", "LCTRL" -> GLFW.GLFW_KEY_LEFT_CONTROL;
+                    case "RCONTROL", "RCTRL" -> GLFW.GLFW_KEY_RIGHT_CONTROL;
+                    case "TAB" -> GLFW.GLFW_KEY_TAB;
+                    case "GRAVE", "`" -> GLFW.GLFW_KEY_GRAVE_ACCENT;
+                    case "R" -> GLFW.GLFW_KEY_R;
+                    case "C" -> GLFW.GLFW_KEY_C;
+                    case "X" -> GLFW.GLFW_KEY_X;
+                    case "P" -> GLFW.GLFW_KEY_P;
+                    default -> {
+                        if (keyName.length() == 1) {
+                            char c = keyName.charAt(0);
+                            if (c >= 'A' && c <= 'Z') {
+                                yield GLFW.GLFW_KEY_A + (c - 'A');
+                            }
+                        }
+                        yield -1;
+                    }
+                };
+                if (keyCode == -1) { msg("§cUnknown key: " + keyName); return; }
+                m.setKeyBind(keyCode);
+                msg("§aBound " + m.getName() + " to " + keyName);
             }
         });
 

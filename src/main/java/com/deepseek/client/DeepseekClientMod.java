@@ -13,6 +13,9 @@ import org.lwjgl.glfw.GLFW;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DeepseekClientMod implements ClientModInitializer {
     public static final String MOD_ID = "deepseekclient";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
@@ -24,6 +27,7 @@ public class DeepseekClientMod implements ClientModInitializer {
     public CommandManager commandManager;
     public ConfigManager configManager;
     public KeyBinding guiKeyBind;
+    private final Map<String, KeyBinding> customBinds = new HashMap<>();
 
     public static DeepseekClientMod getInstance() { return INSTANCE; }
 
@@ -37,7 +41,7 @@ public class DeepseekClientMod implements ClientModInitializer {
         this.configManager = new ConfigManager();
 
         guiKeyBind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.deepseekclient.gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_SHIFT, CLIENT_NAME
+                "key.deepseekclient.gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_F6, CLIENT_NAME
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
