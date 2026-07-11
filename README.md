@@ -135,4 +135,7 @@ All commands use the `.` prefix. Type `.help` in-game for full list.
 ## 📄 License
 
 This project is licensed under the MIT License.
->>>>>>> 4058d80 (Initial commit - DeepseekClient v1.0.0)
+
+---
+
+**🌐 中文版说明 → [README_CN.md](README_CN.md)**
