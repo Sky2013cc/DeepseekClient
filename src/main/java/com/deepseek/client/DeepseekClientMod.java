@@ -21,6 +21,7 @@ public class DeepseekClientMod implements ClientModInitializer {
     private static DeepseekClientMod INSTANCE;
     public ModuleManager moduleManager;
     public CommandManager commandManager;
+    public ConfigManager configManager;
     public KeyBinding guiKeyBind;
 
     public static DeepseekClientMod getInstance() { return INSTANCE; }
@@ -32,6 +33,7 @@ public class DeepseekClientMod implements ClientModInitializer {
 
         this.moduleManager = new ModuleManager();
         this.commandManager = new CommandManager();
+        this.configManager = new ConfigManager();
 
         guiKeyBind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.deepseekclient.gui", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RSHIFT, CLIENT_NAME

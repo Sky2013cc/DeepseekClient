@@ -68,11 +68,24 @@ public class CommandManager {
 
         commands.add(new Command("config", "c", "Configuration commands") {
             @Override public void execute(String[] args) {
-                if (args.length < 2) { msg("Usage: .config save/load"); return; }
+                if (args.length < 2) { msg("Usage: .config save/load/list/official"); return; }
+                var cm = DeepseekClientMod.getInstance().configManager;
                 switch (args[1].toLowerCase()) {
-                    case "save" -> msg("§aConfiguration saved!");
-                    case "load" -> msg("§eConfiguration loaded!");
-                    default -> msg("§cUnknown option: " + args[1]);
+                    case "save" -> {
+                        if (args.length > 2) cm.saveConfig(args[2], new java.util.HashMap<>());
+                        msg("§aConfig saved as: " + cm.getCurrentConfig());
+                    }
+                    case "load" -> {
+                        if (args.length < 3) { msg("Usage: .config load <name>"); return; }
+                        cm.loadConfig(args[2]);
+                        msg("§eLoaded config: " + args[2]);
+                    }
+                    case "list" -> msg("§eConfigs: " + String.join(", ", cm.listConfigs()));
+                    case "official" -> {
+                        cm.loadConfig("official_grim");
+                        msg("§aLoaded official Grim config! All settings applied.");
+                    }
+                    default -> msg("§cUnknown: " + args[1]);
                 }
             }
         });
