@@ -1,6 +1,7 @@
 package com.deepseek.client;
 
 import com.deepseek.client.command.CommandManager;
+import com.deepseek.client.config.ConfigManager;
 import com.deepseek.client.gui.GuiScreen;
 import com.deepseek.client.module.ModuleManager;
 import net.fabricmc.api.ClientModInitializer;
