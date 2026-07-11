@@ -7,13 +7,21 @@ import java.nio.file.*;
 import java.util.*;
 
 public class ConfigManager {
-    private static final Path CONFIG_DIR = Path.of("DeepseekClient");
+    private static final String CONFIG_DIR_NAME = "DeepseekClient";
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
-    private String currentConfig = "default";
+    private String currentConfig = "official_bedwars";
+    private Path configDir;
 
     public ConfigManager() {
+        // 使用 Minecraft 游戏目录
+        configDir = Path.of(System.getProperty("user.dir"), CONFIG_DIR_NAME);
         try {
-            Files.createDirectories(CONFIG_DIR);
+            Files.createDirectories(configDir);
+        } catch (Exception e) {
+            // 回退到当前目录
+            configDir = Path.of(CONFIG_DIR_NAME);
+        }
+        try {
             // Create official configs if they don't exist
             if (!getConfigPath("official_grim").toFile().exists()) {
                 saveOfficialGrimConfig();
@@ -62,7 +70,7 @@ public class ConfigManager {
 
     public List<String> listConfigs() {
         List<String> configs = new ArrayList<>();
-        File[] files = CONFIG_DIR.toFile().listFiles((dir, name) -> name.endsWith(".json"));
+        File[] files = configDir.toFile().listFiles((dir, name) -> name.endsWith(".json"));
         if (files != null) {
             for (File f : files) {
                 configs.add(f.getName().replace(".json", ""));
@@ -74,7 +82,7 @@ public class ConfigManager {
     public String getCurrentConfig() { return currentConfig; }
 
     private Path getConfigPath(String name) {
-        return CONFIG_DIR.resolve(name + ".json");
+        return configDir.resolve(name + ".json");
     }
 
     private Map<String, Object> createDefaultConfig() {
